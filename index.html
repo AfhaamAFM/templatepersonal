@@ -14,6 +14,7 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <!-- FOnt awseome -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
   <!-- Google Fonts -->
@@ -749,24 +750,30 @@
 
             <div class="container">
             
-              <form id="form" method="POST" action="" class="form">
-                <div class="form-control">
-                  <label for="username">Name</label>
-                  <input type="text" placeholder="Enter your name" id="username" />
+              <form action="" id="submit-form" method="post" role="form" class="php-email-form">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" name="name" class="form-control" id="surname" placeholder="Your Name"  maxlength="10" >
+                    <p class="valid-alert" id="name-alert">Enter a valid name</p>
+                    <p id="namelength"></p>
+                  
+                    
+                  </div>
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" >
+                    <p class="valid-alert" id="email-alert">enter a valid email</p>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" >
                  
-                  <small>Error message</small>
                 </div>
-                <div class="form-control">
-                  <label for="username">Email</label>
-                  <input type="text" placeholder="enter your email" id="email" />
-           
-                  <small>Error message</small>
+                <div class="form-group mt-3">
+                  <textarea class="form-control" name="message" rows="5" id="message" placeholder="Message"  maxlength="40" ></textarea>
+                  <p class="message-alert" id="message-alert"></p>
                 </div>
-                <div class="form-control">
-                  <label for="">Enter your message</label>
-                  <input name="" id="" cols="30" rows="5"></input>
-                </div>
-                <button type="submit">Send message</button>
+               
+                <div class="text-center"><button id="form-button" type="submit">Send Message</button></div>
               </form>
             </div>
             

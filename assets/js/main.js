@@ -265,69 +265,183 @@
 
 
 //my form validation start
-const form = document.getElementById('form');
-const username = document.getElementById('username');
-const email = document.getElementById('email');
+// const form = document.getElementById('form');
+// const username = document.getElementById('username');
+// const email = document.getElementById('email');
 // const password = document.getElementById('password');
 // const password2 = document.getElementById('password2');
 
-form.addEventListener('submit', e => {
-	 e.preventDefault();
+// form.addEventListener('submit', e => {
+// 	 e.preventDefault();
 	
-	checkInputs();
-});
+// 	checkInputs();
+// });
 
-function checkInputs() {
-	// trim to remove the whitespaces
-	const usernameValue = username.value.trim();
-	const emailValue = email.value.trim();
-	// const passwordValue = password.value.trim();
-	// const password2Value = password2.value.trim();
-	
-	if(usernameValue === '') {
-		setErrorFor(username, 'Username cannot be blank');
-	} else {
-		setSuccessFor(username);
-	}
-	
-	if(emailValue === '') {
-		setErrorFor(email, 'Email cannot be blank');
-	} else if (!isEmail(emailValue)) {
-		setErrorFor(email, 'Not a valid email');
-	} else {
-		setSuccessFor(email);
-	}
-	
-	// if(passwordValue === '') {
-	// 	setErrorFor(password, 'Password cannot be blank');
-	// } else {
-	// 	setSuccessFor(password);
-	// }
-	
-	// if(password2Value === '') {
-	// 	setErrorFor(password2, 'Password2 cannot be blank');
-	// } else if(passwordValue !== password2Value) {
-	// 	setErrorFor(password2, 'Passwords does not match');
-	// } else{
-	// 	setSuccessFor(password2);
-	// }
-}
+// function checkInputs() {
 
-function setErrorFor(input, message) {
-	const formControl = input.parentElement;
-	const small = formControl.querySelector('small');
-	formControl.className = 'form-control error';
-	small.innerText = message;
-}
-
-function setSuccessFor(input) {
-	const formControl = input.parentElement;
-	formControl.className = 'form-control success';
-}
+// 	const usernameValue = username.value.trim();
+// 	const emailValue = email.value.trim();
+// 	const passwordValue = password.value.trim();
+// 	const password2Value = password2.value.trim();
 	
-function isEmail(email) {
-	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
-}
+// 	if(usernameValue === '') {
+// 		setErrorFor(username, 'Username cannot be blank');
+// 	} else {
+// 		setSuccessFor(username);
+// 	}
+	
+// 	if(emailValue === '') {
+// 		setErrorFor(email, 'Email cannot be blank');
+// 	} else if (!isEmail(emailValue)) {
+// 		setErrorFor(email, 'Not a valid email');
+// 	} else {
+// 		setSuccessFor(email);
+// 	}
+	
+// 	if(passwordValue === '') {
+// 		setErrorFor(password, 'Password cannot be blank');
+// 	} else {
+// 		setSuccessFor(password);
+// 	}
+	
+// 	if(password2Value === '') {
+// 		setErrorFor(password2, 'Password2 cannot be blank');
+// 	} else if(passwordValue !== password2Value) {
+// 		setErrorFor(password2, 'Passwords does not match');
+// 	} else{
+// 		setSuccessFor(password2);
+// 	}
+// }
 
+// function setErrorFor(input, message) {
+// 	const formControl = input.parentElement;
+// 	const small = formControl.querySelector('small');
+// 	formControl.className = 'form-control error';
+// 	small.innerText = message;
+// }
+
+// function setSuccessFor(input) {
+// 	const formControl = input.parentElement;
+// 	formControl.className = 'form-control success';
+// }
+	
+// function isEmail(email) {
+// 	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+// }
+let formName=document.querySelector("#surname");
+let formNamelimit=document.querySelector("#surname");
+let formEmail=document.querySelector("#email");
+
+let formMessage=document.querySelector('#message');
+
+
+let nameAlert=document.querySelector("#name-alert");
+let emailAlert=document.querySelector("#email-alert");
+let messageAlert = document.querySelector('#message-alert')
+
+let button=document.querySelector("#form-button");
+button.style.background="grey";
+button.disabled=true;
+
+let checkName=false;
+let checkNamelength=false;
+let checkEmail=false;
+let checkmessage=false;
+
+formName.addEventListener("keyup", function(event){
+    let name=event.target.value;
+    nameAlert.style.display="block";
+    
+    let rgxName=/^[^\d]+$/;
+
+    if(name.match(rgxName)){
+        nameAlert.style.display="none";
+        nameAlert.innerHTML="enter name only"
+        checkName=true;
+    }
+    else if(name==""){
+        nameAlert.style.display="none";
+        checkName=false;
+    }
+    else{
+        checkName=false;
+    }
+
+})
+
+formNamelimit.addEventListener("keyup",function(e){
+    let Namelimit = e.target.value
+    let neamlen = Namelimit.length;
+    if(neamlen < "4"){       
+        namelength.innerHTML="minimum 4 number"
+        checkNamelength=false;
+    
+     } else{
+        namelength.innerHTML=""
+        checkNamelength=true;
+    }
+
+})
+
+formEmail.addEventListener("keyup", function(event){
+    let email=event.target.value;
+    emailAlert.style.display="block";
+
+    let rgxEmail=/[a-z_0-9]+@[a-z]+\.(com|net|in)/;
+
+    if(email.match(rgxEmail)){
+        emailAlert.style.display="none";
+        checkEmail=true;
+    }
+    else if(email==""){
+        emailAlert.style.display="none";
+        checkEmail=false;
+    }
+    else{
+        checkEmail=false;
+    }
+})
+formMessage.addEventListener("keyup",function(e){
+    let message = e.target.value;
+    let messageLength= message.length;
+    if(messageLength <= "5"){
+        messageAlert.innerHTML="enter minium 6 letters"
+        checkmessage=false;
+    }else{
+        messageAlert.innerHTML=""
+        checkmessage=true;
+    }
+})
+
+
+
+setInterval(()=>{
+   if(checkEmail && checkName && checkNamelength && checkmessage ){
+       button.disabled=false;
+       button.style.background="#5faee3";
+   }else{
+    button.disabled=true;
+    button.style.background="grey";
+   }
+}, 100);
+
+
+$("#submit-form").submit((e)=>{
+    e.preventDefault()
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycby0XG0Vvt1A7o-LO1gmAi-9vtBv5-8x7Nti73N6SoTCOpqv7IZmoEhdPmE97YgW3sb52A/exec",
+            data:$("#submit-form").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                window.location.reload()
+                //window.location.href="https://google.com"
+            },
+            error:function (err){
+                alert("Something Error")
+    
+            }
+        })
+})
 
 

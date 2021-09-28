@@ -1050,7 +1050,7 @@ section {
 }
 
 /* /form validation */
-.form {
+/* .form {
 	padding: 30px 40px;	
 }
 
@@ -1128,4 +1128,20 @@ section {
 	padding: 10px;
 	margin-top: 20px;
 	width: 100%;
+} */
+.valid-alert{
+  color: red;
+  font-size: 11px;
+}
+
+#name-alert{
+  display: none;
+}
+
+#email-alert{
+  display:none;
+}
+.namelength{
+  color: red;
+  font-size: 11px;
 }
